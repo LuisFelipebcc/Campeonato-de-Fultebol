@@ -5,68 +5,69 @@
 
 	int main(){
 	
-	setlocale(LC_ALL, "Portuguese");
-	int num;
+		setlocale(LC_ALL, "Portuguese");
+		int num;
+		int gol1,gol2;
 	
-	int pontos[num];
-	int vitorias[num];
-	int derrotas[num];
-	int empates[num];
-	int saldo_gols[num];
+		int pontos[num];
+		int vitorias[num];
+		int derrotas[num];
+		int empates[num];
+		int saldo_gols[num];
 	
-	char nomes[num][50];
-	printf("Digite o número de times: ");    
-	scanf("%d", &num);
-	fflush(stdin);
+		char nomes[num][50];
+		printf("Digite o número de times: ");    
+		scanf("%d", &num);
+		printf("=============================\n");
+		fflush(stdin);
 	
-	for (int i = 0; i<num; i++){
-		printf("Digite o nome do time: %d: ",i+1);
-		gets(nomes[i]);  
+		for (int i = 0; i<num; i++){
+			printf("");
+			printf("Digite o nome do time %d: ",i+1);
+			gets(nomes[i]); 
+			printf("=============================\n"); 
+		}
 	
-	}
-	
-	int gol1,gol2;
-	
-	for (int i = 0; i < num ; i++){
-		for(int j = 1; j < num ; j ++){
-			if((nomes[i] != nomes[j]) && (nomes[j] != nomes[i])){
-				printf("\n");		
-			 	printf("\n%s X %s",nomes[i],nomes[j]);
-			 	printf("\nDigite os gols do %s: ",nomes[i]);
-			 	scanf("%d", &gol1);
-			 	printf("\nDigite os gols do %s: ",nomes[j]);
-			 	scanf("%d", &gol2);
-			 	
-			 	if(gol1>gol2){
-			 		vitorias[i] = vitorias[i] + 1;
-			 		pontos[i] = vitorias[i] *3;
-					saldo_gols[i]=gol1-gol2;
-					derrotas[j] = derrotas[j]+1;
-				}else if(gol1<gol2){
-					vitorias[j]= vitorias[j] + 1;
-			 		pontos[j] = vitorias[j]*3;
-					saldo_gols[j]=gol1-gol2;
-					derrotas[i]++;
-				}else if(gol1 == gol2){
-					empates[i]++;
-					empates[j]++;
-				}
+		for (int i = 0; i < num ; i++){
+			for(int j = 1; j < num ; j ++){
+				
+				if((nomes[i] != nomes[j]) && (nomes[j] != nomes[i])){
+					
+					
+			 		printf("%s X %s",nomes[i],nomes[j]);
+			 		printf("\nDigite os gols do %s: ",nomes[i]);
+			 		scanf("%d", &gol1);
+			 		printf("Digite os gols do %s: ",nomes[j]);
+			 		scanf("%d", &gol2);
+			 		printf("=============================\n");
 			 	
 				}
 				
-			 
+					if(gol1 > gol2){
+			 			vitorias[i] = vitorias[i] + 1;
+			 			pontos[i] = vitorias[i] *3;
+						saldo_gols[i]=gol1-gol2;
+						derrotas[j] = derrotas[j]+1;
+					}else if(gol1<gol2){
+						vitorias[j]= vitorias[j] + 1;
+			 			pontos[j] = vitorias[j]*3;
+						saldo_gols[j]=gol1-gol2;
+						derrotas[i]+= 1;
+					}else if(gol1 == gol2){
+						empates[i] += 1 ;
+						empates[j] += 1;
+					}
 			}
 		}
 	    
 		for(int i = 0; i < num ; i ++){
-		printf("%s\n",nomes[i]);
-		printf("%s",pontos[i]);
-		printf("%s",vitorias[i]);
-		printf("%s",derrotas[i]);
-		printf("%s",empates[i]);
-		printf("%s",saldo_gols[i]);
-			
-		}	
+			printf("Time: %s\n",nomes[i]);
+			printf("P: %d\n",pontos[i]);	
+			printf("V: %d\n",vitorias[i]);
+			printf("E: %d\n",empates[i]);
+			printf("D: %d\n",derrotas[i]);
+			printf("S: %d\n",saldo_gols[i]);
+		}
 		
 		system("pause");
 		
